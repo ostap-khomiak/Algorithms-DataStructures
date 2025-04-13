@@ -12,17 +12,8 @@ class LinkedList:
     def __init__(self):
         self.head = None
         self.tail = None
+        self.length = 0
 
-    def length(self):
-        node = self.head
-
-        counter = 0
-
-        while node != None:
-            counter += 1
-            node = node.next
-
-        return counter
 
     def insertAt(self, data, index):
         node = self.head
@@ -42,6 +33,7 @@ class LinkedList:
             new_node.prev = node.prev
             new_node.next = node
             node.prev = new_node
+        self.length += 1
         return True
 
 
@@ -71,6 +63,7 @@ class LinkedList:
             node.prev.next = node.next
             node.next.prev = node.prev
 
+        self.length -= 1
         return True
 
     def removeAt(self, index):
@@ -99,6 +92,7 @@ class LinkedList:
             node.prev.next = node.next
             node.next.prev = node.prev
 
+        self.length -= 1
         return True
         
 
@@ -112,6 +106,7 @@ class LinkedList:
             self.tail.next = new_node
             new_node.prev = self.tail
             self.tail = new_node
+        self.length += 1
 
     def prepend(self, data):
         new_node = Node(data)
@@ -123,6 +118,7 @@ class LinkedList:
             self.head.prev = new_node
             new_node.next = self.head
             self.head = new_node
+        self.length += 1
             
 
     def pop(self):
@@ -136,6 +132,7 @@ class LinkedList:
         else:
             self.head = None
 
+        self.length -= 1
         return popped_node.data
 
     
@@ -174,28 +171,27 @@ if __name__ == '__main__':
     linked_list.append(30)
     linked_list.prepend(10)
 
-    print(f"Linked list: {linked_list}")
-    print(f"Linked List length: {linked_list.length()}")
+    print(f"Linked list: {linked_list} : {linked_list.length}")
 
     print(f"Get 1: {linked_list.get(1)}")
     print(f"Get 5: {linked_list.get(5)}")
     print("-" * 30)
-    print(f"Linked list: {linked_list}")
+    print(f"Linked list: {linked_list} : {linked_list.length}")
     print(f"Inserting At 1: {linked_list.insertAt(25, 1)}")
-    print(f"Linked list: {linked_list}")
+    print(f"Linked list: {linked_list} : {linked_list.length}")
     print(f"Pop: {linked_list.pop()}")
-    print(f"Linked list: {linked_list}")
+    print(f"Linked list: {linked_list} : {linked_list.length}")
     print(f"Appending 30: {linked_list.append(30)}")
     print("-" * 30)
-    print(f"Linked list: {linked_list}")
+    print(f"Linked list: {linked_list} : {linked_list.length}")
     print(f"Removing At 1: {linked_list.removeAt(1)}")
-    print(f"Linked list: {linked_list}")
+    print(f"Linked list: {linked_list} : {linked_list.length}")
     print(f"Removing At 5: {linked_list.removeAt(5)}")
-    print(f"Linked list: {linked_list}")
+    print(f"Linked list: {linked_list} : {linked_list.length}")
     print(f"Removing 30: {linked_list.remove(30)}")
-    print(f"Linked list: {linked_list}")
+    print(f"Linked list: {linked_list} : {linked_list.length}")
     print(f"Removing At 0: {linked_list.removeAt(0)}")
-    print(f"Linked list: {linked_list}")
+    print(f"Linked list: {linked_list} : {linked_list.length}")
 
 
 
